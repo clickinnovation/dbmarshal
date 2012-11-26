@@ -384,7 +384,8 @@ class DBMarshal(object):
                 for statement in statements:
                     if len(statement.strip()) > 0:
                         cursor.execute(statement)
-                        cursor.nextset()
+                        cursor.close()
+                        cursor = conn.cursor()
 
                 cursor.execute(log_update_two)
 
